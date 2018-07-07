@@ -1,0 +1,334 @@
+@import "syntax-variables";
+@import "guides";
+
+
+atom-text-editor {
+  color: @syntax-text-color;
+  background-color: fade(@syntax-background-color, 15%);
+
+  .wrap-guide {
+    background-color: @syntax-wrap-guide-color;
+  }
+
+  .indent-guide {
+    color: @syntax-indent-guide-color;
+  }
+
+  .invisible-character {
+    color: @syntax-invisible-character-color;
+  }
+
+  .gutter {
+    background-color: @miku-off;
+    color: @mikuro;
+
+    .line-number {
+      &.cursor-line {
+        background-color: @mikushiro;
+        color: @miku-vibrant;
+      }
+
+      &.cursor-line-no-selection {
+        color: @mikuro;
+      }
+    }
+  }
+
+  .gutter .line-number.folded,
+  .gutter .line-number:after,
+  .fold-marker:after {
+    color: @light-gray;
+  }
+
+  .invisible {
+    color: @syntax-text-color;
+  }
+
+  .cursor {
+    width: 30px !important;
+    color: @syntax-cursor-color;
+    background-image: url("atom://mikutax-syntax/styles/negi.gif");
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+
+  .selection .region {
+    background-color: @syntax-selection-color;
+    opacity: 0.8;
+  }
+}
+
+.bracket-matcher .region {
+    border-bottom: 1px solid @syntax-cursor-color;
+    box-sizing: border-box;
+    background-color: fade(@syntax-text-color, 10%);
+    box-shadow: inset 0 -1px 0 @syntax-cursor-color;
+}
+
+atom-text-editor .search-results .marker .region,
+:host .search-results .marker .region {
+  background-color: transparent;
+  border: 1px solid @syntax-result-marker-color;
+}
+
+atom-text-editor .search-results .marker.current-result .region,
+:host .search-results .marker.current-result .region {
+  border: 1px solid @syntax-result-marker-color-selected;
+}
+
+// Syntax styles
+
+.syntax--comment {
+  color: @mikuro;
+}
+
+.syntax--keyword {
+  color: @miku;
+
+  &.syntax--control {
+    color: @miku;
+  }
+
+  &.syntax--operator {
+    color: @syntax-text-color;
+  }
+
+  &.syntax--other.syntax--special-method {
+    color: @ruka;
+  }
+
+  &.syntax--other.syntax--unit {
+    color: @kaito;
+  }
+}
+
+.syntax--storage {
+  color: @kaito;
+  font-style: italic;
+}
+
+.syntax--constant {
+  color: @meiko;
+
+  &.syntax--character.syntax--escape {
+    color: @rin;
+  }
+
+  &.syntax--numeric {
+    color: @rin;
+  }
+
+  &.syntax--other.syntax--color {
+    color: @kaito-off;
+  }
+
+  &.syntax--other.syntax--symbol {
+    color: @miku-off;
+  }
+}
+
+.syntax--variable {
+  color: @miku;
+
+  &.syntax--interpolation {
+    color: darken(@kaito, 10%);
+  }
+
+  &.syntax--parameter.syntax--function {
+    color: @syntax-text-color;
+  }
+}
+
+.syntax--invalid.syntax--illegal {
+  background-color: @meiko-vibrant;
+  color: @syntax-background-color;
+}
+
+.syntax--string {
+  color: @rin;
+
+
+  &.syntax--regexp {
+    color: @ruka;
+
+    .syntax--source.syntax--ruby.syntax--embedded {
+      color: @meiko;
+    }
+  }
+
+  &.syntax--other.syntax--link {
+    color: @meiko;
+  }
+}
+
+.syntax--punctuation {
+  &.syntax--definition {
+    &.syntax--comment {
+      color: @light-gray;
+    }
+
+    &.syntax--string,
+    &.syntax--variable,
+    &.syntax--parameters,
+    &.syntax--array {
+      color: @syntax-text-color;
+    }
+
+    &.syntax--heading,
+    &.syntax--identity {
+      color: @kaito;
+    }
+
+    &.syntax--bold {
+      color: @rin;
+      font-weight: bold;
+    }
+
+    &.syntax--italic {
+      color: @miku;
+      font-style: italic;
+    }
+  }
+
+  &.syntax--section.syntax--embedded {
+    color: darken(@meiko, 10%);
+  }
+
+}
+
+.syntax--support {
+
+  &.syntax--class {
+    color: @kaito;
+  }
+
+  &.syntax--function  {
+    color: @meiko;
+
+    &.syntax--any-method {
+      color: @kaito;
+    }
+  }
+}
+
+.syntax--entity {
+  &.syntax--name.syntax--function {
+    color: @ruka;
+  }
+  &.syntax--name.syntax--type {
+    color: @miku;
+    text-decoration: underline;
+  }
+
+  &.syntax--other.syntax--inherited-class {
+    color: @miku;
+  }
+  &.syntax--name.syntax--class, &.syntax--name.syntax--type.syntax--class {
+    color: @rin;
+  }
+
+  &.syntax--name.syntax--section {
+    color: @kaito;
+  }
+
+  &.syntax--name.syntax--tag {
+    color: @meiko;
+    text-decoration: underline;
+  }
+
+  &.syntax--other.syntax--attribute-name {
+    color: @rin;
+
+    &.syntax--id {
+      color: @kaito;
+    }
+  }
+}
+
+.syntax--meta {
+  &.syntax--class {
+    color: @rin;
+  }
+
+  &.syntax--link {
+    color: @ruka;
+  }
+
+  &.syntax--require {
+    color: @kaito;
+  }
+
+  &.syntax--selector {
+    color: @ruka;
+  }
+
+  &.syntax--separator {
+    background-color: @gray;
+    color: @syntax-text-color;
+  }
+}
+
+.syntax--none {
+  color: @syntax-text-color;
+}
+
+.syntax--markup {
+  &.syntax--bold {
+    color: @ruka;
+    font-weight: bold;
+  }
+
+  &.syntax--changed {
+    color: @miku;
+  }
+
+  &.syntax--deleted {
+    color: @meiko;
+  }
+
+  &.syntax--italic {
+    color: @ruka-vibrant;
+    font-style: italic;
+  }
+
+  &.syntax--heading .syntax--punctuation.syntax--definition.syntax--heading {
+    color: @kaito-off;
+  }
+
+  &.syntax--inserted {
+    color: @miku;
+  }
+
+  &.syntax--list {
+    color: @meiko;
+  }
+
+  &.syntax--quote {
+    color: @rin;
+  }
+
+  &.syntax--raw.syntax--inline {
+    color: @miku;
+  }
+}
+
+.syntax--source.syntax--gfm .syntax--markup {
+  -webkit-font-smoothing: auto;
+  &.syntax--heading {
+    color: @miku; 
+  }
+}
+
+
+// Mini editor
+
+atom-text-editor[mini] .scroll-view {
+  padding-left: 1px;
+}
+.item-views {
+    background-image: url("atom://mikutax-syntax/styles/miku.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-color: @syntax-background-color;
+}
